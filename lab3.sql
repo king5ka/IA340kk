@@ -34,7 +34,7 @@ insert into course(c_number,c_name,room,p_email)
 values('c4','facebook','r1','p3@jmu.edu');
 
 -- 2.6
--- Q2: Need to modify the course table first so that p_email doesnt disappear when p1 is deleted
+-- Q2: Need to modify the course table first so that p_email doesnt disappear when p1 is deleted, AND you can't add a new course without having a new professor
 update course
 set p_email = 'p3@jmu.edu'
 where p_email = 'p1@jmu.edu';
