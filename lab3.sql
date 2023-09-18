@@ -43,11 +43,47 @@ delete from professor
 where p_email = 'p1@jmu.edu';
 
 -- 2.7
-select * from enroll;
-"s1@jmu.edu"	"c1"
+select * from enroll
+order by c_number asc;
+/* "s1@jmu.edu"	"c1"
 "s2@jmu.edu"	"c1"
 "s3@jmu.edu"	"c1"
 "s4@jmu.edu"	"c2"
 "s2@jmu.edu"	"c3"
-"s3@jmu.edu"	"c3"
+"s3@jmu.edu"	"c3" */
 -- copy pasted because I'm not sure what else to do
+
+--2.8
+-- course 1 (c1) has three students enrolled (s1, s2, and s3)
+
+--2.9
+create view p_name_c_name as
+select professor.p_name,
+		course.c_name
+from professor
+inner join course
+on professor.p_email = course.p_email;
+
+/* "p3"	"facebook"
+"p2"	"mongodb"
+"p3"	"postgresql"
+"p3"	"twitter" */
+
+
+--2.10
+-- p3 teaches the largest number of courses; facebook, postresql, and twitter (will probably have to join tables)
+
+
+
+
+
+select count(c_number)
+from course
+group by p_email
+
+
+
+
+select count(s_email)
+from enroll
+group by c_number
