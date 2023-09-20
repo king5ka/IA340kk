@@ -68,9 +68,9 @@ on professor.p_email = course.p_email;
 "p3"	"twitter" */
 
 --2.10
-select p_name, count(*) as most_course
+select p_name, count(*) as total_course
 from public.p_name_c_name
 group by p_name
-order by most_course desc
+order by total_course desc
 limit 1;
 -- p3 teaches the largest number of courses
