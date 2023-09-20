@@ -45,16 +45,14 @@ where p_email = 'p1@jmu.edu';
 -- 2.7
 select * from enroll
 order by c_number asc;
-/* "s1@jmu.edu"	"c1"
-"s2@jmu.edu"	"c1"
-"s3@jmu.edu"	"c1"
-"s4@jmu.edu"	"c2"
-"s2@jmu.edu"	"c3"
-"s3@jmu.edu"	"c3" */
--- copy pasted because I'm not sure what else to do
 
 --2.8
--- course 1 (c1) has three students enrolled (s1, s2, and s3)
+select c_number, count(*) as num_students
+from enroll
+group by c_number
+order by num_students desc
+limit 1;
+-- course 1 (c1) has three students enrolled
 
 --2.9
 create view p_name_c_name as
@@ -69,21 +67,10 @@ on professor.p_email = course.p_email;
 "p3"	"postgresql"
 "p3"	"twitter" */
 
-
 --2.10
--- p3 teaches the largest number of courses; facebook, postresql, and twitter (will probably have to join tables)
-
-
-
-
-
-select count(c_number)
-from course
-group by p_email
-
-
-
-
-select count(s_email)
-from enroll
-group by c_number
+select p_name, count(*) as most_course
+from public.p_name_c_name
+group by p_name
+order by most_course desc
+limit 1;
+-- p3 teaches the largest number of courses
